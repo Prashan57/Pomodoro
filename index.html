@@ -10,33 +10,36 @@
   <body>
     <div class="timer-content">
       <header>
-        <div class="title">PromoFocus</div>
+        <div class="title">PomoFocus</div>
       </header>
 
       <section class="timer-container">
         <div class="item-holder">
           <div class="tab-list"></div>
-          <div class="tab-item">Pomodoro</div>
-          <div class="tab-item">Short Break</div>
-          <div class="tab-item">Long Break</div>
+          <div class="tab-item active" id="pomodoro-tab" id="Title">Pomodoro</div>
+          <div class="tab-item" id="short-break-tab">Short Break</div>
+          <div class="tab-item" id="long-break-tab">Long Break</div>
         </div>
 
         <div class="tab-content-holder">
           <div class="tab-content">
-            <div class="tab-item-content-active" id="pomodoro-content">
-              <div class="time">25:00</div>
-              <button class="btn start">Start</button>
+            <div class="tab-item-content active" id="pomodoro-content">
+              <div class="time" id="pomoTimer">25:00</div>
+              <button class="btn start" id="pomoStartTimer">Start</button>
             </div>
-            <!-- <div class="tab-content">
+            </div>
+            <div class="tab-content">
             <div class="tab-item-content" id="shortbreak-content">
-            <div class="time">5:00</div>
-            <button class="btn-start">Start</div>
+            <div class="time" id="shortTimer">5:00</div>
+            <button class="btn start" id="shortStartTimer">Start</div>
+          </div>
           </div>
           <div class="tab-content">
-            <div class="tab-item-content" id="shortbreak-content">
-            <div class="time">5:00</div>
-            <button class="btn-start">Start</div>
-          </div> -->
+            <div class="tab-item-content" id="longbreak-content">
+            <div class="time" id="longTimer">10:00</div>
+            <button class="btn start" id="longStartTimer">Start</div>
+          </div>
+          <button class="btn start" id="Pause">Pause</button>
           </div>
         </div>
       </section>

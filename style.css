@@ -6,10 +6,6 @@ header {
   margin: 20;
 }
 
-.timer-content {
-  /* align-content: center; */
-}
-
 .title {
   margin: 15 auto;
   padding: 10;
@@ -32,10 +28,27 @@ header {
   justify-content: center;
 }
 
-.tab-content-holder {
-  display: flex;
+.tab-item.active {
+  background-color: teal;
+  color: white;
+}
+
+.tab-item-content {
+  display: none;
+}
+.tab-item-content.active {
+  display: block;
+  justify-content: center;
+}
+
+.tab-content-holder.active {
+  display: block;
   justify-content: center;
   margin: 20px;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 .tab-item {
@@ -49,7 +62,13 @@ header {
   margin: 10;
 }
 
+.tab-content.active {
+  background-color: teal;
+  color: white;
+}
 .time {
+  display: flex;
+  justify-content: center;
   color: white;
   font-size: 75px;
   margin: 20px;
@@ -57,12 +76,17 @@ header {
 }
 
 .start {
+  display: none;
+  display: flex;
+  justify-content: center;
+  width: 80%;
   border: none;
   border-radius: 3px;
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 10px 70;
+  margin-left: 45;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -77,9 +101,13 @@ header {
 
 .tab-item:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
+  cursor: pointer;
 }
 
-.active {
-  background-color: teal;
-  color: white;
+#Pause {
+  display: none;
+}
+
+#Pause.active {
+  display: block;
 }

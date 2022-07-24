@@ -19,6 +19,8 @@ const pStartTimer = document.getElementById("pomoStartTimer");
 const sStartTimer = document.getElementById("shortStartTimer");
 const lStartTimer = document.getElementById("longStartTimer");
 
+const Pause = document.getElementById("Pause");
+
 //Text from js
 pStartTimer.textContent = "START";
 sStartTimer.textContent = "START";
@@ -66,36 +68,51 @@ LongBreakTab.addEventListener("click", () => {
   ShortBreakContent.classList.remove("active");
   PomodoroContent.classList.remove("active");
 });
-
+var secondsLeft;
 //Timer function
 const timer = (seconds, contentDisplay, timerControl) => {
-  const now = Date.now();
-  const then = now + seconds * 1000;
+  
+const   now = Date.now();
+   const then = now + seconds * 1000;
+  
+   let timeInterval = setInterval(() => {
 
-  let timeInterval = setInterval(() => {
-    if (timerControl.textContent === "START") {
-      const secondsLeft = Math.round((then - Date.now()) / 1000);
+    if (timerControl.innerText=="START")
+ {
+ timerControl.addEventListener("click", function () {
+  clearInterval(timeInterval); 
+timerControl.innerText = "STOP";
+
+ });
+}
+else 
+//if(timerControl.innerText=="START")
+
+{
+   timerControl.addEventListener("click", function () {
+      timerControl.innerText = "START";  
+     
+    })
+  
+ secondsLeft = Math.round((then - Date.now()) / 1000);
       displayTimer(secondsLeft, contentDisplay);
-      console.log(secondsLeft);
+     
+
       //timer end condition
       if (secondsLeft < 1) {
         clearInterval(timeInterval);
-      }
-
-      pStartTimer.addEventListener("click", function () {
-        if (pStartTimer.textContent === "STOP") {
-          pStartTimer.addEventListener("click", function () {
-            pStartTimer.textContent = "START";
-          });
-        }
-        if (pStartTimer.textContent === "START") {
-          pStartTimer.textContent = "STOP";
-          console.log("FUNC 2");
-        }
-      });
+      } 
+ 
     }
+
+    
+
   }, 1000);
-};
+
+  console.log(secondsLeft);
+
+  return secondsLeft;
+}
 
 function displayTimer(seconds, element) {
   const minute = Math.floor(seconds / 60);
@@ -105,11 +122,15 @@ function displayTimer(seconds, element) {
   element.innerText = minute + " : " + second;
 }
 
-//Add button event listener
+// //Add button event listener
+var z=1500;
 pStartTimer.addEventListener("click", function () {
-  let PomodoroTotalTime = 1500;
-  timer(PomodoroTotalTime, pomoTimer, pStartTimer);
+  let PomodoroTotalTime = z;
+ pStartTimer.innerText="STOP";
+  z=timer(PomodoroTotalTime, pomoTimer, pStartTimer);
+  
 });
+ 
 sStartTimer.addEventListener("click", function () {
   let shortTotalTime = 300;
   if (sStartTimer.textContent === "START") {
@@ -126,7 +147,8 @@ lStartTimer.addEventListener("click", function () {
   if (lStartTimer.textContent === "START") {
     lStartTimer.textContent = "STOP";
     timer(LongTotalTime, longTimer);
-  } else if (lStartTimer.textContent === "STOP") {
+  }
+   else if (lStartTimer.textContent === "STOP") {
     lStartTimer.textContent = "START";
     clearInterval(timer.timeInterval);
     console.log("stop");
